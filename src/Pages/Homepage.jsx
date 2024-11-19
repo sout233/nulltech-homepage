@@ -12,7 +12,7 @@ class Homepage extends Component {
                         <h2 className='text-4xl font-bold'>PARAMECIUM</h2>
                     </div>
                     <div className="flex flex-col justify-center h-full w-auto">
-                        <Spline className='' scene="https://prod.spline.design/T2YezWy8vr3x1qE8/scene.splinecode" />
+                    <Spline scene="https://prod.spline.design/T2YezWy8vr3x1qE8/scene.splinecode" />
                     </div>
                 </div>
             </div>
