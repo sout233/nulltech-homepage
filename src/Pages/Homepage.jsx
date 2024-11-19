@@ -5,7 +5,7 @@ class Homepage extends Component {
     render() {
         return (
             <div data-theme="dark">
-                <div className="navbar bg-base-100 fixed opacity-80 backdrop-blur-lg">
+                <div className="navbar fixed z-20 backdrop-blur-2xl">
                     <div className="flex-1">
                         <img src='ntp2024_logo.svg' className="btn btn-ghost text-xl w-32"></img>
                     </div>
@@ -16,8 +16,8 @@ class Homepage extends Component {
                                 <details>
                                     <summary>Event</summary>
                                     <ul className="bg-base-100 rounded-t-none p-2">
-                                        <li><a>Link 1</a></li>
-                                        <li><a>Link 2</a></li>
+                                        <li><a>NTP1</a></li>
+                                        <li><a>NTP2</a></li>
                                     </ul>
                                 </details>
                             </li>
