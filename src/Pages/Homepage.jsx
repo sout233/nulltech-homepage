@@ -1,10 +1,15 @@
 import React, { Component } from "react";
 import Spline from "@splinetool/react-spline";
+import { ReactLenis, useLenis } from 'lenis/react'
 
-class Homepage extends Component {
-  render() {
+function Homepage() {
+  const lenis = useLenis(({ scroll }) => {
+    // called every scroll
+  })
+
     return (
-      <div data-theme="dark">
+    <ReactLenis root>
+        <div data-theme="dark">
         <div className="navbar fixed z-20 backdrop-blur-2xl">
           <div className="flex-1">
             <img
@@ -61,8 +66,8 @@ class Homepage extends Component {
           </div>
         </div>
       </div>
+    </ReactLenis>
     );
-  }
 }
 
 export default Homepage;
