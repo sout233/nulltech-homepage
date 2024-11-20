@@ -1,13 +1,17 @@
 import React, { Component } from "react";
 import Spline from "@splinetool/react-spline";
 import { ReactLenis, useLenis } from 'lenis/react'
+import gsap from 'gsap';
+import { useGSAP } from '@gsap/react';
+import { useRef } from 'react';
 
 function Homepage() {
   const lenis = useLenis(({ scroll }) => {
     // called every scroll
   })
 
-    return (
+
+  return (
     <ReactLenis root>
         <div data-theme="dark">
         <div className="navbar fixed z-20 backdrop-blur-2xl">
@@ -41,14 +45,14 @@ function Homepage() {
         <div className="w-full h-screen flex md:flex-row flex-col justify-between bg-black overflow-hidden">
           <div className="flex flex-col justify-center ml-10 h-full w-auto leading-tight z-10">
             <h1 className="text-2xl font-bold mb-2 ~ml-1/2">无技术草履虫</h1>
-            <h2 className="text-[7rem] font-bold mb-4 leading-none ~text-6xl/8xl">
+            <h2 className="text-[7rem] font-bold mb-4 leading-none ~text-6xl/8xl" ref={container}>
               NULLTECH
             </h2>
             <h2 className="text-4xl font-bold ~ml-1/2">PARAMECIUM</h2>
           </div>
-          <div className="flex-col justify-center h-full w-auto absolute opacity-50 md:block md:relative md:opacity-100">
+          <div className="w-[720rem] static opacity-20 xl:opacity-100">
             {/* <Spline scene="https://prod.spline.design/T2YezWy8vr3x1qE8/scene.splinecode" /> */}
-            <video autoPlay loop muted playsInline className="block">
+            <video autoPlay loop muted playsInline className="block absolute top-10 md:-top-6 md:right-[1rem] md:w-[50rem]">
               <source src="cubic_c1.mp4" type="video/mp4" />
               Your browser does not support the video tag.
             </video>
