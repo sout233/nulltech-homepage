@@ -63,13 +63,14 @@ function Homepage() {
           <div className="flex flex-col justify-center ml-10 h-full w-auto leading-tight z-10" ref={nulltechTitle}>
             <h1 className="text-2xl font-bold mb-2 ~ml-1/2 big-title">无技术草履虫</h1>
             <h2
-              className="text-[7rem] font-bold mb-4 leading-none ~text-6xl/8xl big-title box"
+              className="text-[7rem] font-bold mb-4 leading-none ~text-6xl/8xl big-title"
             >
               NULLTECH
             </h2>
             <h2 className="text-4xl font-bold ~ml-1/2 big-title">
               PARAMECIUM
             </h2>
+            <button className="btn btn-primary mt-4 w-40 ~ml-1/2">Dizzylab</button>
           </div>
           <div className="w-[720rem] static opacity-20 xl:opacity-100">
             {/* <Spline scene="https://prod.spline.design/T2YezWy8vr3x1qE8/scene.splinecode" /> */}
