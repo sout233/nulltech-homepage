@@ -4,7 +4,7 @@ import { ReactLenis, useLenis } from "lenis/react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { useRef } from "react";
-import "./Homepage.css"
+import "./Homepage.css";
 
 function Homepage() {
   const lenis = useLenis(({ scroll }) => {
@@ -60,17 +60,37 @@ function Homepage() {
           </div>
         </div>
         <div className="w-full h-screen flex md:flex-row flex-col justify-between bg-black overflow-hidden">
-          <div className="flex flex-col justify-center mx-10 md:ml-10 h-full w-auto leading-tight z-10" ref={nulltechTitle}>
-            <h1 className="text-2xl font-bold mb-2 ~ml-1/2 big-title">无技术草履虫</h1>
-            <h2
-              className="text-[7rem] font-bold mb-4 leading-none ~text-6xl/8xl big-title"
-            >
+          <div
+            className="flex flex-col justify-center mx-10 md:ml-10 h-full w-auto leading-tight z-10"
+            ref={nulltechTitle}
+          >
+            <h1 className="text-2xl font-bold mb-2 ~ml-1/2 big-title">
+              无技术草履虫
+            </h1>
+            <h2 className="text-[7rem] font-bold mb-4 leading-none ~text-6xl/8xl big-title">
               NULLTECH
             </h2>
-            <h2 className="text-4xl font-bold ~ml-1/2 big-title">
-              PARAMECIUM
-            </h2>
-            <a class="btn btn-primary mt-6 w-full md:w-56">Dizzylab <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="hidden h-6 w-6 transition-transform duration-300 hover:translate-x-1 rtl:rotate-180 rtl:group-hover:-translate-x-1 md:inline-block"><path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3"></path></svg></a>
+            <h2 className="text-4xl font-bold ~ml-1/2 big-title">PARAMECIUM</h2>
+            <div className="flex flex-col md:flex-row justify-center items-center md:justify-start md:items-start space-x-4">
+              <a className="btn btn-primary mt-6 w-full md:w-56">
+                Dizzylab{" "}
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                  class="hidden h-6 w-6 transition-transform duration-300 hover:translate-x-1 rtl:rotate-180 rtl:group-hover:-translate-x-1 md:inline-block"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3"
+                  ></path>
+                </svg>
+              </a>
+              <a className="btn btn-neutral mt-6 w-full md:w-48" href="https://space.bilibili.com/3546388319177513">Bilibili</a>
+            </div>
           </div>
           <div className="w-[720rem] static opacity-20 xl:opacity-100">
             {/* <Spline scene="https://prod.spline.design/T2YezWy8vr3x1qE8/scene.splinecode" /> */}
