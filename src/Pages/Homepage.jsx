@@ -106,8 +106,17 @@ function Homepage() {
             </video>
           </div>
         </div>
+        
+        <div className="w-full h-screen flex md:flex-row flex-col justify-center items-center bg-primary overflow-x-hidden">
+          <div className="flex flex-col justify-center items-center text-center ml-10 h-full w-auto leading-tight ">
+            <h2 className="text-[7rem] font-extrabold mb-4 leading-none ~text-6xl/8xl text-primary-content">
+            HOW WE WORK
+            </h2>
+          </div>
+        </div>
+
         <div className="w-full h-screen flex md:flex-row flex-col justify-between bg-black overflow-x-hidden">
-          <div className="flex flex-col justify-center ml-10 h-full w-auto leading-tight ">
+        <div className="flex flex-col justify-center ml-10 h-full w-auto leading-tight ">
             <h2 className="text-[7rem] font-bold mb-4 leading-none ~text-6xl/8xl">
               NULLTECH
             </h2>
