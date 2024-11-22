@@ -92,14 +92,14 @@ function Homepage() {
               <a className="btn btn-neutral mt-6 w-full md:w-48" href="https://space.bilibili.com/3546388319177513">Bilibili</a>
             </div>
           </div>
-          <div className="w-[720rem] static opacity-20 xl:opacity-100">
+          <div className="w-[720rem] xl:w-full static opacity-40 xl:opacity-100">
             {/* <Spline scene="https://prod.spline.design/T2YezWy8vr3x1qE8/scene.splinecode" /> */}
             <video
               autoPlay
               loop
               muted
               playsInline
-              className="block absolute top-16  md:-top-6 md:right-[1rem] md:w-[50rem]"
+              className="block absolute top-16 md:-top-6 md:right-[1rem] md:w-[50rem] xl:relative xl:w-full"
             >
               <source src="cubic_c1.mp4" type="video/mp4" />
               Your browser does not support the video tag.
