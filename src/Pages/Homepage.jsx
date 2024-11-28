@@ -92,14 +92,14 @@ function Homepage() {
               <a className="btn btn-neutral mt-6 w-full md:w-48" href="https://space.bilibili.com/3546388319177513">Bilibili</a>
             </div>
           </div>
-          <div className="w-[720rem] xl:w-full static opacity-40 xl:opacity-100">
+          <div className="w-[720rem] xl:w-full static opacity-20 xl:opacity-100">
             {/* <Spline scene="https://prod.spline.design/T2YezWy8vr3x1qE8/scene.splinecode" /> */}
             <video
               autoPlay
               loop
               muted
               playsInline
-              className="block absolute top-16 md:-top-6 md:right-[1rem] md:w-[50rem] xl:relative xl:w-full"
+              className="block absolute top-16 overflow-hidden md:-top-6 md:right-[1rem] md:w-[50rem] xl:relative xl:w-full"
             >
               <source src="cubic_c1.mp4" type="video/mp4" />
               Your browser does not support the video tag.
@@ -107,8 +107,16 @@ function Homepage() {
           </div>
         </div>
         
+        <div className="w-full h-screen flex md:flex-row flex-col justify-center items-center bg-black overflow-x-hidden">
+          <div className="flex flex-col justify-center items-center text-center h-full w-auto leading-tight ">
+            <h2 className="text-[7rem] font-extrabold mb-4leading-none ~text-4xl/6xl text-white">
+            浏览所有专辑
+            </h2>
+          </div>
+        </div>
+
         <div className="w-full h-screen flex md:flex-row flex-col justify-center items-center bg-primary overflow-x-hidden">
-          <div className="flex flex-col justify-center items-center text-center ml-10 h-full w-auto leading-tight ">
+          <div className="flex flex-col justify-center items-center text-center h-full w-auto leading-tight ">
             <h2 className="text-[7rem] font-extrabold mb-4 leading-none ~text-6xl/8xl text-primary-content">
             HOW WE WORK
             </h2>
