@@ -5,6 +5,11 @@ import { useGSAP } from "@gsap/react";
 import { useRef, useState } from "react";
 import "./Homepage.css";
 import { Canvas, useFrame } from "@react-three/fiber";
+import { useEffect } from "react";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(useGSAP);
+gsap.registerPlugin(ScrollTrigger);
 
 function Box(props) {
   // This reference gives us direct access to the THREE.Mesh object
@@ -36,9 +41,20 @@ function Homepage() {
     // called every scroll
   });
 
-  gsap.registerPlugin(useGSAP);
+  const lenisRef = useRef();
+
+  useEffect(() => {
+    function update(time) {
+      lenisRef.current?.lenis?.raf(time * 1000);
+    }
+
+    gsap.ticker.add(update);
+
+    return () => gsap.ticker.remove(update);
+  }, []);
 
   const nulltechTitle = useRef();
+  const albumsDiv = useRef();
 
   useGSAP(
     () => {
@@ -60,8 +76,23 @@ function Homepage() {
     { scope: nulltechTitle }
   );
 
+  useGSAP(
+    () => {
+      gsap.from(".showcase-card", {
+        scrollTrigger: ".showcase-card", // start the animation when enters the viewport (once)
+        y: 100,
+        opacity: 0,
+        ease: "power2.inOut",
+        duration: 1,
+        stagger: 0.2,
+        scrub: 3,
+      });
+    },
+    { scope: albumsDiv }
+  );
+
   return (
-    <ReactLenis root>
+    <ReactLenis root options={{ autoRaf: false }} ref={lenisRef}>
       <div data-theme="dark">
         <div className="navbar fixed z-20 backdrop-blur-2xl">
           <div className="flex-1">
@@ -164,14 +195,17 @@ function Homepage() {
           </div>
         </div>
         {/* 专辑一览 */}
-        <div className="w-full h-screen flex md:flex-row flex-col justify-center items-center bg-black overflow-x-hidden">
+        <div
+          ref={albumsDiv}
+          className="w-full h-screen flex md:flex-row flex-col justify-center items-center overflow-x-hidden bg-base-300 grid-bg"
+        >
           <div className="flex flex-col justify-center items-center text-center h-full w-auto leading-tight ">
             <h2 className="text-[7rem] font-extrabold mb-4leading-none ~text-4xl/6xl text-white">
               专辑一览
             </h2>
             <div className="h-10"></div>
             <div className="flex flex-row justify-center items-center space-x-10">
-              <div className=" bg-base-200 rounded-xl w-60">
+              <div className=" bg-base-200 rounded-xl w-60 showcase-card">
                 <a href="https://www.dizzylab.net/d/NTP-001/">
                   <img
                     src="images/NTP-001.jpg"
@@ -183,7 +217,7 @@ function Homepage() {
                   <h2 className="text-sm">NTP-001</h2>
                 </div>
               </div>
-              <div className="bg-base-200 rounded-xl w-60">
+              <div className="bg-base-200 rounded-xl w-60 showcase-card">
                 <a href="https://www.dizzylab.net/d/NTP-002/">
                   <img
                     src="images/NTP-002.jpg"
@@ -195,7 +229,7 @@ function Homepage() {
                   <h2 className="text-sm">NTP-002</h2>
                 </div>
               </div>
-              <div className="bg-base-200 rounded-xl w-60">
+              <div className="bg-base-200 rounded-xl w-60 showcase-card">
                 <a href="https://www.dizzylab.net/d/NTP-003/">
                   <img
                     src="images/NTP-003.jpg"
@@ -212,9 +246,7 @@ function Homepage() {
         </div>
         <div className="w-full h-screen flex md:flex-row flex-col justify-center items-center bg-primary overflow-x-hidden">
           <div className="flex flex-col justify-center items-center text-center h-full w-auto leading-tight ">
-            <h2 className="text-[7rem] font-extrabold mb-4 leading-none ~text-6xl/8xl text-primary-content">
-              HOW WE WORK
-            </h2>
+            <h2 className="text-[7rem] font-extrabold mb-4 leading-none ~text-6xl/8xl text-primary-content"></h2>
           </div>
         </div>
         <div className="w-full h-screen flex md:flex-row flex-col justify-between bg-black overflow-x-hidden">
