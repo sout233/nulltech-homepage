@@ -4,9 +4,17 @@ import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { useRef, useState } from "react";
 import "./Homepage.css";
-import { Canvas, useFrame } from "@react-three/fiber";
+import { Canvas, useFrame, useLoader } from "@react-three/fiber";
 import { useEffect } from "react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import {
+  AsciiEffect,
+  GLTFLoader,
+  OrbitControls,
+  RoomEnvironment,
+} from "three/examples/jsm/Addons.js";
+import { Suspense } from "react";
+import { Environment } from "@react-three/drei";
 
 gsap.registerPlugin(useGSAP);
 gsap.registerPlugin(ScrollTrigger);
@@ -33,6 +41,19 @@ function Box(props) {
       <meshStandardMaterial color={hovered ? "hotpink" : "orange"} />
     </mesh>
   );
+}
+
+function Model({ url }) {
+  const gltf = useLoader(GLTFLoader, url);
+  const ref = useRef();
+  // 动画逻辑：每帧更新模型的旋转
+  useFrame(({ clock }) => {
+    if (ref.current) {
+      ref.current.rotation.y = clock.getElapsedTime();
+    }
+  });
+
+  return <primitive ref={ref} object={gltf.scene} />;
 }
 
 function Homepage() {
@@ -79,13 +100,15 @@ function Homepage() {
   useGSAP(
     () => {
       gsap.from(".showcase-card", {
-        scrollTrigger: ".showcase-card", // start the animation when enters the viewport (once)
+        scrollTrigger: {
+          trigger: ".showcase-card",
+        }, // start the animation when enters the viewport (once)
         y: 100,
         opacity: 0,
         ease: "power2.inOut",
         duration: 1,
         stagger: 0.2,
-        scrub: 3,
+        toggleActions: "play none none reset"
       });
     },
     { scope: albumsDiv }
@@ -197,7 +220,7 @@ function Homepage() {
         {/* 专辑一览 */}
         <div
           ref={albumsDiv}
-          className="w-full h-screen flex md:flex-row flex-col justify-center items-center overflow-x-hidden bg-base-300 grid-bg"
+          className="w-full h-screen flex md:flex-row flex-col justify-center items-center overflow-x-hidden bg-black grid-bg"
         >
           <div className="flex flex-col justify-center items-center text-center h-full w-auto leading-tight ">
             <h2 className="text-[7rem] font-extrabold mb-4leading-none ~text-4xl/6xl text-white">
@@ -246,7 +269,19 @@ function Homepage() {
         </div>
         <div className="w-full h-screen flex md:flex-row flex-col justify-center items-center bg-primary overflow-x-hidden">
           <div className="flex flex-col justify-center items-center text-center h-full w-auto leading-tight ">
-            <h2 className="text-[7rem] font-extrabold mb-4 leading-none ~text-6xl/8xl text-primary-content"></h2>
+            <h2 className="text-[7rem] font-extrabold mb-4 leading-none ~text-6xl/8xl text-primary-content">
+              OUR WORKS
+            </h2>
+            <Canvas className="absolute" style={{ position: "absolute" }}>
+              {/* 添加光源 */}
+              <ambientLight intensity={0.5} />
+              <directionalLight position={[10, 10, 5]} intensity={1} />
+
+              {/* <Environment preset="sunset" background /> */}
+              <Suspense>
+                <Model url="models/toilet.glb" />
+              </Suspense>
+            </Canvas>
           </div>
         </div>
         <div className="w-full h-screen flex md:flex-row flex-col justify-between bg-black overflow-x-hidden">
