@@ -1,3 +1,5 @@
+/* eslint-disable react/prop-types */
+/* eslint-disable react/no-unknown-property */
 /* eslint-disable no-unused-vars */
 import { ReactLenis, useLenis } from "lenis/react";
 import gsap from "gsap";
@@ -17,10 +19,12 @@ import { Suspense } from "react";
 import { WebGLRenderer } from "three/src/renderers/WebGLRenderer.js";
 import { PerspectiveCamera } from "three";
 import { TextPlugin } from "gsap/TextPlugin";
+import { Flip } from "gsap/Flip";
 
 gsap.registerPlugin(useGSAP);
 gsap.registerPlugin(ScrollTrigger);
 gsap.registerPlugin(TextPlugin);
+gsap.registerPlugin(Flip);
 
 function Box(props) {
   // This reference gives us direct access to the THREE.Mesh object
@@ -45,7 +49,6 @@ function Box(props) {
     </mesh>
   );
 }
-
 function Model({ url }) {
   const gltf = useLoader(GLTFLoader, url);
   const ref = useRef();
@@ -58,7 +61,6 @@ function Model({ url }) {
 
   return <primitive ref={ref} object={gltf.scene} />;
 }
-
 function Homepage() {
   // eslint-disable-next-line no-unused-vars
   const lenis = useLenis(({ scroll }) => {
@@ -141,6 +143,8 @@ function Homepage() {
   );
 
   useGSAP(() => {
+    let state = Flip.getState(".about-us-title2");
+
     let tl = gsap.timeline({
       scrollTrigger: {
         trigger: ".super-primary-panel",
@@ -177,45 +181,17 @@ function Homepage() {
       opacity: 1,
       text: "何为虫社？",
       ease: "power2.inOut",
+      onComplete: () => {
+        const aboutUsPanelState = Flip.getState(".about-us-panel");
+        const aboutUsPanel = document.querySelector(".about-us-panel");
+        aboutUsPanel.classList.add("text-start")
+        aboutUsPanel.classList.add("items-start")
+        Flip.from(aboutUsPanelState, {
+          duration: 1,
+          ease: "power1.inOut",
+        });
+      },
     });
-
-    // tl.to(
-    //   ".about-us-title",
-    //   {
-    //     duration: 1,
-    //     y: 0,
-    //     x: -100,
-    //     opacity: 1,
-    //     ease: "power2.inOut",
-    //   },
-    //   "<"
-    // );
-
-    // tl.to(
-    //   ".about-us-title2",
-    //   {
-    //     duration: 1,
-    //     y: 0,
-    //     x: -200,
-    //     opacity: 1,
-    //     ease: "power2.inOut",
-    //   },
-    //   "<"
-    // );
-
-    // gsap.from(".our-works-title", {
-    //   duration: 1,
-    //   scrollTrigger: {
-    //     trigger: ".our-works-title",
-    //     start: "top 70%",
-    //     end: "bottom 70%",
-    //     toggleActions: "play none none reverse",
-    //   },
-    //   y: -100,
-    //   opacity: 0,
-    //   text: "NULLTECH PARAMECIUM",
-    //   ease: "power2.inOut",
-    // });
   });
 
   return (
@@ -375,7 +351,7 @@ function Homepage() {
           className="w-full h-screen flex md:flex-row flex-col justify-center items-center bg-primary overflow-x-hidden super-primary-panel"
           ref={ourWorksDiv}
         >
-          <div className="flex flex-col justify-center items-center text-start h-full w-auto leading-tight panel">
+          <div className="flex flex-col justify-center items-center text-start h-full w-auto leading-tight about-us-panel">
             <h2 className="text-[7rem] font-extrabold mb-4 leading-none ~text-6xl/8xl text-primary-content about-us-title">
               ABOUT US
             </h2>
@@ -397,11 +373,8 @@ function Homepage() {
               </Suspense>
             </Canvas> */}
           </div>
-          <div className="flex flex-col justify-center items-center text-center h-full w-auto leading-tight panel">
-
-          </div>
+          <div className="flex flex-col justify-center items-center text-center h-full w-auto leading-tight panel"></div>
         </div>
-
 
         <div className="w-full h-screen flex md:flex-row flex-col justify-between bg-black overflow-x-hidden">
           <div className="flex flex-col justify-center ml-10 h-full w-auto leading-tight ">
