@@ -14,10 +14,13 @@ import {
   RoomEnvironment,
 } from "three/examples/jsm/Addons.js";
 import { Suspense } from "react";
-import { Environment } from "@react-three/drei";
+import { WebGLRenderer } from "three/src/renderers/WebGLRenderer.js";
+import { PerspectiveCamera } from "three";
+import { TextPlugin } from "gsap/TextPlugin";
 
 gsap.registerPlugin(useGSAP);
 gsap.registerPlugin(ScrollTrigger);
+gsap.registerPlugin(TextPlugin);
 
 function Box(props) {
   // This reference gives us direct access to the THREE.Mesh object
@@ -63,6 +66,16 @@ function Homepage() {
   });
 
   const lenisRef = useRef();
+  const sceneRef = useRef();
+  const renderer = new WebGLRenderer();
+  const effect = new AsciiEffect(renderer, " .:-+*=%@#", { invert: true });
+  const asciiRef = useRef();
+  const camera = new PerspectiveCamera(
+    70,
+    window.innerWidth / window.innerHeight,
+    0.1,
+    100
+  );
 
   useEffect(() => {
     function update(time) {
@@ -74,8 +87,21 @@ function Homepage() {
     return () => gsap.ticker.remove(update);
   }, []);
 
+  useEffect(() => {
+    document.body.appendChild(effect.domElement);
+
+    asciiRef.current = effect;
+
+    function animate() {
+      requestAnimationFrame(animate);
+    }
+
+    animate();
+  }, []);
+
   const nulltechTitle = useRef();
   const albumsDiv = useRef();
+  const ourWorksDiv = useRef();
 
   useGSAP(
     () => {
@@ -102,17 +128,95 @@ function Homepage() {
       gsap.from(".showcase-card", {
         scrollTrigger: {
           trigger: ".showcase-card",
+          toggleActions: "play none none reverse",
         }, // start the animation when enters the viewport (once)
         y: 100,
         opacity: 0,
         ease: "power2.inOut",
         duration: 1,
         stagger: 0.2,
-        toggleActions: "play none none reset"
       });
     },
     { scope: albumsDiv }
   );
+
+  useGSAP(() => {
+    let tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: ".super-primary-panel",
+        scrub: true,
+        pin: true,
+        start: "top top",
+        end: "+=100%",
+      },
+    });
+
+    tl.from(".about-us-title", {
+      duration: 1,
+      y: -100,
+      opacity: 0,
+      text: "NULLTECH PARAMECIUM",
+      ease: "power2.inOut",
+    });
+
+    tl.from(
+      ".about-us-title2",
+      {
+        duration: 1,
+        y: -100,
+        opacity: 0,
+        text: "我们是一群草履虫",
+        ease: "power2.inOut",
+      },
+      "<"
+    );
+
+    tl.to(".about-us-title2", {
+      duration: 1,
+      y: 0,
+      opacity: 1,
+      text: "何为虫社？",
+      ease: "power2.inOut",
+    });
+
+    // tl.to(
+    //   ".about-us-title",
+    //   {
+    //     duration: 1,
+    //     y: 0,
+    //     x: -100,
+    //     opacity: 1,
+    //     ease: "power2.inOut",
+    //   },
+    //   "<"
+    // );
+
+    // tl.to(
+    //   ".about-us-title2",
+    //   {
+    //     duration: 1,
+    //     y: 0,
+    //     x: -200,
+    //     opacity: 1,
+    //     ease: "power2.inOut",
+    //   },
+    //   "<"
+    // );
+
+    // gsap.from(".our-works-title", {
+    //   duration: 1,
+    //   scrollTrigger: {
+    //     trigger: ".our-works-title",
+    //     start: "top 70%",
+    //     end: "bottom 70%",
+    //     toggleActions: "play none none reverse",
+    //   },
+    //   y: -100,
+    //   opacity: 0,
+    //   text: "NULLTECH PARAMECIUM",
+    //   ease: "power2.inOut",
+    // });
+  });
 
   return (
     <ReactLenis root options={{ autoRaf: false }} ref={lenisRef}>
@@ -267,23 +371,38 @@ function Homepage() {
             </div>
           </div>
         </div>
-        <div className="w-full h-screen flex md:flex-row flex-col justify-center items-center bg-primary overflow-x-hidden">
-          <div className="flex flex-col justify-center items-center text-center h-full w-auto leading-tight ">
-            <h2 className="text-[7rem] font-extrabold mb-4 leading-none ~text-6xl/8xl text-primary-content">
-              OUR WORKS
+        <div
+          className="w-full h-screen flex md:flex-row flex-col justify-center items-center bg-primary overflow-x-hidden super-primary-panel"
+          ref={ourWorksDiv}
+        >
+          <div className="flex flex-col justify-center items-center text-start h-full w-auto leading-tight panel">
+            <h2 className="text-[7rem] font-extrabold mb-4 leading-none ~text-6xl/8xl text-primary-content about-us-title">
+              ABOUT US
             </h2>
-            <Canvas className="absolute" style={{ position: "absolute" }}>
-              {/* 添加光源 */}
+            <h3 className="~text-2xl/4xl font-bold mb-2 text-primary-content about-us-title2">
+              NULLTECH PARAMECIUM
+            </h3>
+            {/* <Canvas
+              className="absolute"
+              style={{ position: "absolute" }}
+              onCreated={({ scene, camera }) => {
+                sceneRef.current = scene;
+              }}
+            >
               <ambientLight intensity={0.5} />
               <directionalLight position={[10, 10, 5]} intensity={1} />
 
-              {/* <Environment preset="sunset" background /> */}
               <Suspense>
                 <Model url="models/toilet.glb" />
               </Suspense>
-            </Canvas>
+            </Canvas> */}
+          </div>
+          <div className="flex flex-col justify-center items-center text-center h-full w-auto leading-tight panel">
+
           </div>
         </div>
+
+
         <div className="w-full h-screen flex md:flex-row flex-col justify-between bg-black overflow-x-hidden">
           <div className="flex flex-col justify-center ml-10 h-full w-auto leading-tight ">
             <h2 className="text-[7rem] font-bold mb-4 leading-none ~text-6xl/8xl">
