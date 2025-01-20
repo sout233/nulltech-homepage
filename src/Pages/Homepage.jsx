@@ -20,6 +20,7 @@ import { WebGLRenderer } from "three/src/renderers/WebGLRenderer.js";
 import { PerspectiveCamera } from "three";
 import { TextPlugin } from "gsap/TextPlugin";
 import { Flip } from "gsap/Flip";
+import { rand } from "three/tsl";
 
 gsap.registerPlugin(useGSAP);
 gsap.registerPlugin(ScrollTrigger);
@@ -143,8 +144,6 @@ function Homepage() {
   );
 
   useGSAP(() => {
-    let state = Flip.getState(".about-us-title2");
-
     let tl = gsap.timeline({
       scrollTrigger: {
         trigger: ".super-primary-panel",
@@ -156,7 +155,7 @@ function Homepage() {
     });
 
     tl.from(".about-us-title", {
-      duration: 1,
+      duration: 10,
       y: -100,
       opacity: 0,
       text: "NULLTECH PARAMECIUM",
@@ -166,7 +165,7 @@ function Homepage() {
     tl.from(
       ".about-us-title2",
       {
-        duration: 1,
+        duration: 11,
         y: -100,
         opacity: 0,
         text: "我们是一群草履虫",
@@ -175,23 +174,177 @@ function Homepage() {
       "<"
     );
 
-    tl.to(".about-us-title2", {
-      duration: 1,
-      y: 0,
-      opacity: 1,
-      text: "何为虫社？",
-      ease: "power2.inOut",
-      onComplete: () => {
-        const aboutUsPanelState = Flip.getState(".about-us-panel");
-        const aboutUsPanel = document.querySelector(".about-us-panel");
-        aboutUsPanel.classList.add("text-start")
-        aboutUsPanel.classList.add("items-start")
-        Flip.from(aboutUsPanelState, {
-          duration: 1,
-          ease: "power1.inOut",
-        });
+    tl.to(
+      ".about-us-title2",
+      {
+        duration: 1,
+        y: 0,
+        opacity: 1,
+        text: "何为虫社？",
+        ease: "power2.inOut",
       },
+      "+=5"
+    );
+
+    tl.to(
+      ".about-us-title",
+      {
+        duration: 3,
+        x: "-50vw",
+        opacity: 0,
+      },
+      "<"
+    );
+
+    tl.to(
+      ".about-us-title2",
+      {
+        duration: 3,
+        x: "-50vw",
+        opacity: 0,
+        ease: "power2.inOut",
+      },
+      "<"
+    );
+
+    tl.from(
+      ".about-us-title3",
+      {
+        x: "50vw",
+        duration: 4,
+        opacity: 0,
+        text: "WHAT IS NULLTECH PARAMECIUM?",
+        ease: "power2.inOut",
+      },
+      "-=2"
+    );
+
+    tl.from(
+      ".about-us-title4",
+      {
+        x: "50vw",
+        duration: 6,
+        opacity: 0,
+        text: "WHAT IS NULLTECH PARAMECIUM?",
+        ease: "power2.inOut",
+      },
+      "<"
+    );
+    tl.to(".about-us-title3", {
+      x: "-50vw",
+      duration: 4,
+      opacity: 0,
+      text: "NULL",
+    },"+=5");
+    tl.to(
+      ".about-us-title4",
+      {
+        x: "-50vw",
+        duration: 2,
+        opacity: 0,
+        text: "NULL",
+      },
+      "<"
+    );
+    tl.from(
+      ".about-us-title5",
+      {
+        x: "50vw",
+        duration: 4,
+        opacity: 0,
+        text: "WHAT IS NULLTECH PARAMECIUM?",
+        ease: "power2.inOut",
+      },
+      "-=2"
+    );
+    tl.from(
+      ".about-us-title6",
+      {
+        x: "50vw",
+        duration: 4,
+        opacity: 0,
+        text: "WHAT IS NULLTECH PARAMECIUM?",
+        ease: "power2.inOut",
+      },
+      "<"
+    );
+    tl.to(".about-us-title5", { duration: 4 });
+
+    let peoplePanel = gsap.utils.toArray(".people-panel");
+    peoplePanel.forEach((panel) => {
+      let y = gsap.utils.random(-100, 100);
+      panel.style.transform = `translateY(${y}px)`;
     });
+
+    tl.fromTo(
+      peoplePanel,
+      {
+        x: "70vw",
+        opacity: 1,
+        duration: 10,
+        stagger: 2,
+      },
+      {
+        x: "-70vw",
+        opacity: 0.6,
+        duration: 10,
+        stagger: 2,
+      }
+    );
+
+    tl.to(
+      ".about-us-title5",
+      {
+        y: -200,
+        fontSize: "2.8rem",
+        text: "草履虫们",
+        duration: 4,
+      },
+      "<"
+    );
+    tl.to(
+      ".about-us-title6",
+      {
+        y: -200,
+        fontSize: "1.8rem",
+        text: "你是一个一个啊啊",
+        duration: 4,
+      },
+      "<"
+    );
+
+    let viewNtpBtn = gsap.utils.toArray(".view-ntp-btn");
+
+    tl.fromTo(
+      viewNtpBtn,
+      {
+        opacity: 0,
+        duration: 1,
+        stagger: 0.2,
+        y: 100,
+      },
+      {
+        opacity: 1,
+        duration: 1,
+        stagger: 0.2,
+        y: 0,
+      }
+    );
+
+    tl.to(".about-us-title5",{
+      text: "访问虫社官方账号",
+      fontSize: "2rem",
+      y: -200,
+      duration: 4,
+    })
+
+    tl.to(".about-us-title6",{
+      text: "查看所有参专人员",
+      fontSize: "1.5rem",
+      y: -200,
+      duration: 4,
+    },"-=2")
+
   });
 
   return (
@@ -351,13 +504,14 @@ function Homepage() {
           className="w-full h-screen flex md:flex-row flex-col justify-center items-center bg-primary overflow-x-hidden super-primary-panel"
           ref={ourWorksDiv}
         >
-          <div className="flex flex-col justify-center items-center text-start h-full w-auto leading-tight about-us-panel">
+          <div className="flex flex-col justify-center items-center text-center h-full w-auto leading-tight about-us-panel">
             <h2 className="text-[7rem] font-extrabold mb-4 leading-none ~text-6xl/8xl text-primary-content about-us-title">
               ABOUT US
             </h2>
             <h3 className="~text-2xl/4xl font-bold mb-2 text-primary-content about-us-title2">
               NULLTECH PARAMECIUM
             </h3>
+
             {/* <Canvas
               className="absolute"
               style={{ position: "absolute" }}
@@ -373,7 +527,88 @@ function Homepage() {
               </Suspense>
             </Canvas> */}
           </div>
-          <div className="flex flex-col justify-center items-center text-center h-full w-auto leading-tight panel"></div>
+          <div className="flex flex-col absolute justify-center items-center text-center h-full w-auto leading-tight panel">
+            <h3 className="~text-2xl/4xl font-bold mb-2 text-primary-content about-us-title3">
+              你说的对
+            </h3>
+            <h3 className="~text-2xl/4xl font-bold mb-2 text-primary-content about-us-title4">
+              但是NULLTECH是一个由那啥创建的那啥社团
+            </h3>
+          </div>
+          <div className="flex flex-col absolute justify-center items-center text-center h-full w-auto leading-tight panel">
+            <h3 className="~text-2xl/4xl font-bold mb-2 text-primary-content about-us-title5">
+              在这个社团里
+            </h3>
+            <h3 className="~text-2xl/4xl font-bold mb-2 text-primary-content about-us-title6">
+              你将扮演一名叫做草履虫的角色
+            </h3>
+          </div>
+          <>
+            <div className="flex flex-row justify-between items-center w-fit bg-base-100 p-4 rounded-md absolute people-panel">
+              <div className="avatar placeholder">
+                <div className="bg-neutral text-neutral-content w-12 rounded-full">
+                  <span className="text-3xl">D</span>
+                </div>
+              </div>
+              <div className="text-start ml-4">
+                <h1 className="text-xl font-bold">草履虫</h1>
+                <h2 className="text-sm">NULLTECH PARAMECIUM</h2>
+              </div>
+            </div>
+            <div className="flex flex-row justify-between items-center w-fit bg-base-100 p-4 rounded-md absolute people-panel">
+              <div className="avatar placeholder">
+                <div className="bg-neutral text-neutral-content w-12 rounded-full">
+                  <span className="text-3xl">D</span>
+                </div>
+              </div>
+              <div className="text-start ml-4">
+                <h1 className="text-xl font-bold">草履虫</h1>
+                <h2 className="text-sm">NULLTECH PARAMECIUM</h2>
+              </div>
+            </div>
+            <div className="flex flex-row justify-between items-center w-fit bg-base-100 p-4 rounded-md absolute people-panel">
+              <div className="avatar placeholder">
+                <div className="bg-neutral text-neutral-content w-12 rounded-full">
+                  <span className="text-3xl">D</span>
+                </div>
+              </div>
+              <div className="text-start ml-4">
+                <h1 className="text-xl font-bold">草履虫</h1>
+                <h2 className="text-sm">NULLTECH PARAMECIUM</h2>
+              </div>
+            </div>
+            <div className="flex flex-row justify-between items-center w-fit bg-base-100 p-4 rounded-md absolute people-panel">
+              <div className="avatar placeholder">
+                <div className="bg-neutral text-neutral-content w-12 rounded-full">
+                  <span className="text-3xl">D</span>
+                </div>
+              </div>
+              <div className="text-start ml-4">
+                <h1 className="text-xl font-bold">草履虫</h1>
+                <h2 className="text-sm">NULLTECH PARAMECIUM</h2>
+              </div>
+            </div>
+          </>
+          <div className="flex flex-col absolute justify-center items-center">
+            <a
+              href="https://www.dizzylab.net/l/NullTech_PARAMECIUM/"
+              className="btn btn-outline w-full md:w-48 mt-6 border-black text-black border-2 rounded-full hover:border-none hover:bg-black hover:text-primary view-ntp-btn"
+            >
+              VIEW NTP1
+            </a>
+            <a
+              href="https://www.dizzylab.net/l/NullTech_PARAMECIUM/"
+              className="btn btn-outline w-full md:w-48 mt-6 border-black text-black border-2 rounded-full hover:border-none hover:bg-black hover:text-primary view-ntp-btn"
+            >
+              VIEW NTP1
+            </a>
+            <a
+              href="https://www.dizzylab.net/l/NullTech_PARAMECIUM/"
+              className="btn btn-outline w-full md:w-48 mt-6 border-black text-black border-2 rounded-full hover:border-none hover:bg-black hover:text-primary view-ntp-btn"
+            >
+              VIEW NTP1
+            </a>
+          </div>
         </div>
 
         <div className="w-full h-screen flex md:flex-row flex-col justify-between bg-black overflow-x-hidden">
