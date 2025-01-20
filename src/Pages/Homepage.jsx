@@ -128,6 +128,18 @@ function Homepage() {
 
   useGSAP(
     () => {
+      gsap.from(".ablum-overlook-title",{
+        scrollTrigger: {
+          trigger: ".ablum-overlook-title",
+          toggleActions: "play none none reverse",
+        }
+        ,
+        text:"NULLTECH",
+        fontSize: "6rem",
+        duration: 1,
+        opacity: 0,
+        ease: "power2.in",
+      })
       gsap.from(".showcase-card", {
         scrollTrigger: {
           trigger: ".showcase-card",
@@ -150,7 +162,7 @@ function Homepage() {
         scrub: true,
         pin: true,
         start: "top top",
-        end: "+=100%",
+        end: "+=150%",
       },
     });
 
@@ -335,14 +347,14 @@ function Homepage() {
       text: "访问虫社官方账号",
       fontSize: "2rem",
       y: -200,
-      duration: 4,
+      duration: 2,
     })
 
     tl.to(".about-us-title6",{
       text: "查看所有参专人员",
       fontSize: "1.5rem",
       y: -200,
-      duration: 4,
+      duration: 2,
     },"-=2")
 
   });
@@ -456,7 +468,7 @@ function Homepage() {
           className="w-full h-screen flex md:flex-row flex-col justify-center items-center overflow-x-hidden bg-black grid-bg"
         >
           <div className="flex flex-col justify-center items-center text-center h-full w-auto leading-tight ">
-            <h2 className="text-[7rem] font-extrabold mb-4leading-none ~text-4xl/6xl text-white">
+            <h2 className="text-[7rem] font-extrabold mb-4leading-none ~text-4xl/6xl text-white ablum-overlook-title">
               专辑一览
             </h2>
             <div className="h-10"></div>
