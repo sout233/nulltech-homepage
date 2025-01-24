@@ -128,18 +128,16 @@ function Homepage() {
 
   useGSAP(
     () => {
-      gsap.from(".ablum-overlook-title",{
+      gsap.from(".ablum-overlook-title", {
         scrollTrigger: {
           trigger: ".ablum-overlook-title",
           toggleActions: "play none none reverse",
-        }
-        ,
-        text:"NULLTECH",
-        fontSize: "6rem",
+        },
+        text: "NULLTECH",
         duration: 1,
         opacity: 0,
         ease: "power2.in",
-      })
+      });
       gsap.from(".showcase-card", {
         scrollTrigger: {
           trigger: ".showcase-card",
@@ -242,12 +240,16 @@ function Homepage() {
       },
       "<"
     );
-    tl.to(".about-us-title3", {
-      x: "-50vw",
-      duration: 4,
-      opacity: 0,
-      text: "NULL",
-    },"+=5");
+    tl.to(
+      ".about-us-title3",
+      {
+        x: "-50vw",
+        duration: 4,
+        opacity: 0,
+        text: "NULL",
+      },
+      "+=5"
+    );
     tl.to(
       ".about-us-title4",
       {
@@ -343,20 +345,93 @@ function Homepage() {
       }
     );
 
-    tl.to(".about-us-title5",{
+    tl.to(".about-us-title5", {
       text: "访问虫社官方账号",
       fontSize: "2rem",
       y: -200,
       duration: 2,
-    })
+    });
 
-    tl.to(".about-us-title6",{
-      text: "查看所有参专人员",
-      fontSize: "1.5rem",
-      y: -200,
-      duration: 2,
-    },"-=2")
+    tl.to(
+      ".about-us-title6",
+      {
+        text: "查看所有参专人员",
+        fontSize: "1.5rem",
+        y: -200,
+        duration: 2,
+      },
+      "-=2"
+    );
+  });
 
+  useGSAP(() => {
+    // 持续晃动函数
+    const continuousShake = (target) => {
+      gsap.to(target, {
+        x: () => gsap.utils.random(-5, 15), // 随机生成 x 偏移值
+        y: () => gsap.utils.random(-5, 15), // 随机生成 y 偏移值
+        duration: 2, // 每次晃动的持续时间（较长，使晃动更柔和）
+        repeat: -1, // 无限循环
+        yoyo: true, // 来回晃动
+        ease: "power1.inOut", // 缓动函数
+      });
+    };
+
+    gsap.from(".zero-two-title", {
+      rotation: 10,
+      duration: 0.5,
+      x: -50,
+      y: 50,
+      scale: 1.5,
+      scrollTrigger: {
+        trigger: ".zero-two-title",
+        toggleActions: "play none none reverse",
+      },
+    });
+
+    gsap.from(".ntp-02-preview", {
+      scrollTrigger: {
+        trigger: ".ntp-02-preview",
+        toggleActions: "play none none reverse",
+      },
+      opacity: 0,
+      x: 100,
+    });
+
+    gsap.from(".ntp-02-video", {
+      scrollTrigger: {
+        trigger: ".ntp-02-video",
+        toggleActions: "play none none reverse",
+      },
+      opacity: 0,
+      x: -100,
+      rotationY: 0,
+      onComplete: () => {
+        continuousShake(".ntp-02-video");
+      },
+    });
+
+    const container = document.querySelector(
+      ".ntp-02-preview-bg-container .flex-col"
+    );
+    const h1Elements = document.querySelectorAll(".ntp-02-preview-bg-title");
+
+    // 计算单个 <h1> 标签的高度（因为垂直排列）
+    const h1Height = h1Elements[0].offsetHeight;
+
+    // 计算三行标题的总高度
+    const totalHeight = h1Height * 3;
+
+    // 滚动动画
+    gsap.to(container, {
+      y: -totalHeight, // 向上移动三行标题的高度
+      duration: 10, // 动画持续时间
+      ease: "none", // 线性缓动
+      repeat: -1, // 无限循环
+      modifiers: {
+        y: gsap.utils.unitize((y) => parseFloat(y) % totalHeight), // 实现无缝循环
+      },
+    });
   });
 
   return (
@@ -624,14 +699,57 @@ function Homepage() {
         </div>
 
         <div className="w-full h-screen flex md:flex-row flex-col justify-between bg-black overflow-x-hidden">
-          <div className="flex flex-col justify-center ml-10 h-full w-auto leading-tight ">
-            <h2 className="text-[7rem] font-bold mb-4 leading-none ~text-6xl/8xl">
-              NULLTECH
-            </h2>
-            <h1 className="text-2xl font-bold mb-2">
-              一群草履虫的快乐创新社团
-            </h1>
-            <h2 className="text-4xl font-bold">PARAMECIUM</h2>
+        <div className="flex flex-col absolute h-screen w-[99%] leading-none z-0 ntp-02-preview-bg-container overflow-hidden">
+  <div className="flex flex-col w-[99%] whitespace-nowrap ntp-02-preview-bg-content">
+    <h1 className="text-[18rem] lg:text-[20rem] overflow-hidden font-bold mb-2 ml-2 text-white/10 z-0 ntp-02-preview-bg-title">
+      NTP-004 NTP-004
+    </h1>
+    <h1 className="text-[18rem] lg:text-[20rem] overflow-hidden font-bold mb-2 ml-2 text-white/10 z-0 ntp-02-preview-bg-title">
+      NTP-004 NTP-004
+    </h1>
+    <h1 className="text-[18rem] lg:text-[20rem] overflow-hidden font-bold mb-2 ml-2 text-white/10 z-0 ntp-02-preview-bg-title">
+      NTP-004 NTP-004
+    </h1>
+    <h1 className="text-[18rem] lg:text-[20rem] overflow-hidden font-bold mb-2 ml-2 text-white/10 z-0 ntp-02-preview-bg-title">
+      NTP-004 NTP-004
+    </h1>
+    <h1 className="text-[18rem] lg:text-[20rem] overflow-hidden font-bold mb-2 ml-2 text-white/10 z-0 ntp-02-preview-bg-title">
+      NTP-004 NTP-004
+    </h1>
+    <h1 className="text-[18rem] lg:text-[20rem] overflow-hidden font-bold mb-2 ml-2 text-white/10 z-0 ntp-02-preview-bg-title">
+      NTP-004 NTP-004
+    </h1>
+  </div>
+</div>
+          <div className="flex flex-col justify-center mx-10 md:mx-10 h-full leading-tight overflow-hidden relative w-full">
+            <div className="z-20">
+              <h2 className="text-[7rem] font-bold mb-4 leading-none ~text-6xl/8xl z-10 ntp-02-preview">
+                <span>TECH BOOT UP！</span>
+                <span className="text-primary zero-two-title z-10 absolute">
+                  02
+                </span>
+              </h2>
+
+              <h2 className="text-4xl font-bold ml-1 z-10 ntp-02-preview">
+                即将发布
+              </h2>
+              <a
+                href="https://www.bilibili.com/video/BV1i4wkeGEwH"
+                className="btn btn-outline btn-primary w-full md:w-48 mt-6 border-2 rounded-full hover:border-none z-10 ntp-02-preview-btn"
+              >
+                VIEW PREVIEW
+              </a>
+            </div>
+
+            <iframe
+              src="//player.bilibili.com/player.html?isOutside=true&aid=113855875253582&bvid=BV1i4wkeGEwH&cid=27980992029&p=1"
+              scrolling="no"
+              className="absolute w-1/2 h-1/2 right-20 z-10 opacity-70 hover:opacity-100 ntp-02-video"
+              border="0"
+              frameborder="no"
+              framespacing="0"
+              allowfullscreen="true"
+            ></iframe>
           </div>
         </div>
       </div>
