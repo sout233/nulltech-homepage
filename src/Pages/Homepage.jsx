@@ -382,9 +382,11 @@ function Homepage() {
       duration: 0.5,
       x: -50,
       y: 50,
-      scale: 1.5,
+      scale: 2,
+      opacity: 0,
       scrollTrigger: {
         trigger: ".zero-two-title",
+        start: "top center 80%",
         toggleActions: "play none none reverse",
       },
     });
@@ -699,28 +701,28 @@ function Homepage() {
         </div>
 
         <div className="w-full h-screen flex md:flex-row flex-col justify-between bg-black overflow-x-hidden">
-        <div className="flex flex-col absolute h-screen w-[99%] leading-none z-0 ntp-02-preview-bg-container overflow-hidden">
-  <div className="flex flex-col w-[99%] whitespace-nowrap ntp-02-preview-bg-content">
-    <h1 className="text-[18rem] lg:text-[20rem] overflow-hidden font-bold mb-2 ml-2 text-white/10 z-0 ntp-02-preview-bg-title">
-      NTP-004 NTP-004
-    </h1>
-    <h1 className="text-[18rem] lg:text-[20rem] overflow-hidden font-bold mb-2 ml-2 text-white/10 z-0 ntp-02-preview-bg-title">
-      NTP-004 NTP-004
-    </h1>
-    <h1 className="text-[18rem] lg:text-[20rem] overflow-hidden font-bold mb-2 ml-2 text-white/10 z-0 ntp-02-preview-bg-title">
-      NTP-004 NTP-004
-    </h1>
-    <h1 className="text-[18rem] lg:text-[20rem] overflow-hidden font-bold mb-2 ml-2 text-white/10 z-0 ntp-02-preview-bg-title">
-      NTP-004 NTP-004
-    </h1>
-    <h1 className="text-[18rem] lg:text-[20rem] overflow-hidden font-bold mb-2 ml-2 text-white/10 z-0 ntp-02-preview-bg-title">
-      NTP-004 NTP-004
-    </h1>
-    <h1 className="text-[18rem] lg:text-[20rem] overflow-hidden font-bold mb-2 ml-2 text-white/10 z-0 ntp-02-preview-bg-title">
-      NTP-004 NTP-004
-    </h1>
-  </div>
-</div>
+          <div className="flex flex-col absolute h-screen w-[99%] leading-none z-0 ntp-02-preview-bg-container overflow-hidden">
+            <div className="flex flex-col w-[99%] whitespace-nowrap ntp-02-preview-bg-content">
+              <h1 className="text-[18rem] lg:text-[20rem] overflow-hidden font-bold mb-2 ml-2 text-white/10 z-0 ntp-02-preview-bg-title">
+                NTP-004 NTP-004
+              </h1>
+              <h1 className="text-[18rem] lg:text-[20rem] overflow-hidden font-bold mb-2 ml-2 text-white/10 z-0 ntp-02-preview-bg-title">
+                NTP-004 NTP-004
+              </h1>
+              <h1 className="text-[18rem] lg:text-[20rem] overflow-hidden font-bold mb-2 ml-2 text-white/10 z-0 ntp-02-preview-bg-title">
+                NTP-004 NTP-004
+              </h1>
+              <h1 className="text-[18rem] lg:text-[20rem] overflow-hidden font-bold mb-2 ml-2 text-white/10 z-0 ntp-02-preview-bg-title">
+                NTP-004 NTP-004
+              </h1>
+              <h1 className="text-[18rem] lg:text-[20rem] overflow-hidden font-bold mb-2 ml-2 text-white/10 z-0 ntp-02-preview-bg-title">
+                NTP-004 NTP-004
+              </h1>
+              <h1 className="text-[18rem] lg:text-[20rem] overflow-hidden font-bold mb-2 ml-2 text-white/10 z-0 ntp-02-preview-bg-title">
+                NTP-004 NTP-004
+              </h1>
+            </div>
+          </div>
           <div className="flex flex-col justify-center mx-10 md:mx-10 h-full leading-tight overflow-hidden relative w-full">
             <div className="z-20">
               <h2 className="text-[7rem] font-bold mb-4 leading-none ~text-6xl/8xl z-10 ntp-02-preview">
@@ -744,7 +746,7 @@ function Homepage() {
             <iframe
               src="//player.bilibili.com/player.html?isOutside=true&aid=113855875253582&bvid=BV1i4wkeGEwH&cid=27980992029&p=1"
               scrolling="no"
-              className="absolute w-1/2 h-1/2 right-20 z-10 opacity-70 hover:opacity-100 ntp-02-video"
+              className="absolute w-1/2 h-1/2 right-10 z-10 opacity-70 hover:opacity-100 ntp-02-video"
               border="0"
               frameborder="no"
               framespacing="0"
