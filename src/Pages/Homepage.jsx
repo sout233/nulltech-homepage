@@ -293,13 +293,13 @@ function Homepage() {
     tl.fromTo(
       peoplePanel,
       {
-        x: "70vw",
+        x: "100vw",
         opacity: 1,
         duration: 10,
         stagger: 2,
       },
       {
-        x: "-70vw",
+        x: "-100vw",
         opacity: 0.6,
         duration: 10,
         stagger: 2,
@@ -542,14 +542,14 @@ function Homepage() {
         {/* 专辑一览 */}
         <div
           ref={albumsDiv}
-          className="w-full h-screen flex md:flex-row flex-col justify-center items-center overflow-x-hidden bg-black grid-bg"
+          className="w-full h-full md:h-screen flex md:flex-row flex-col justify-center items-center overflow-x-hidden bg-black grid-bg"
         >
           <div className="flex flex-col justify-center items-center text-center h-full w-auto leading-tight ">
             <h2 className="text-[7rem] font-extrabold mb-4leading-none ~text-4xl/6xl text-white ablum-overlook-title">
               专辑一览
             </h2>
             <div className="h-10"></div>
-            <div className="flex flex-row justify-center items-center space-x-10">
+            <div className="flex flex-col md:flex-row justify-center items-center space-y-10 md:space-y-0 md:space-x-10">
               <div className=" bg-base-200 rounded-xl w-60 showcase-card">
                 <a href="https://www.dizzylab.net/d/NTP-001/">
                   <img
@@ -587,6 +587,7 @@ function Homepage() {
                 </div>
               </div>
             </div>
+            <div className="h-10"></div>
           </div>
         </div>
         <div
@@ -737,7 +738,7 @@ function Homepage() {
               </h2>
               <a
                 href="https://www.bilibili.com/video/BV1i4wkeGEwH"
-                className="btn btn-outline btn-primary w-full md:w-48 mt-6 border-2 rounded-full hover:border-none z-10 ntp-02-preview-btn"
+                className="btn btn-outline btn-primary w-[80%] md:w-48 mt-6 border-2 rounded-full hover:border-none z-10 ntp-02-preview-btn"
               >
                 VIEW PREVIEW
               </a>
@@ -746,7 +747,7 @@ function Homepage() {
             <iframe
               src="//player.bilibili.com/player.html?isOutside=true&aid=113855875253582&bvid=BV1i4wkeGEwH&cid=27980992029&p=1"
               scrolling="no"
-              className="absolute w-1/2 h-1/2 right-10 z-10 opacity-70 hover:opacity-100 ntp-02-video"
+              className="absolute hidden md:block md:w-1/2 md:h-1/2 md:bottom-auto md:right-10 z-10 opacity-70 hover:opacity-100 ntp-02-video"
               border="0"
               frameborder="no"
               framespacing="0"
