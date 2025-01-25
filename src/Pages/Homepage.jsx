@@ -705,22 +705,22 @@ function Homepage() {
           <div className="flex flex-col absolute h-screen w-[99%] leading-none z-0 ntp-02-preview-bg-container overflow-hidden">
             <div className="flex flex-col w-[99%] whitespace-nowrap ntp-02-preview-bg-content">
               <h1 className="text-[18rem] lg:text-[20rem] overflow-hidden font-bold mb-2 ml-2 text-white/10 z-0 ntp-02-preview-bg-title">
-                NTP-004 NTP-004
+                NTP-004NTP-004
               </h1>
               <h1 className="text-[18rem] lg:text-[20rem] overflow-hidden font-bold mb-2 ml-2 text-white/10 z-0 ntp-02-preview-bg-title">
-                NTP-004 NTP-004
+                NTP-004NTP-004
               </h1>
               <h1 className="text-[18rem] lg:text-[20rem] overflow-hidden font-bold mb-2 ml-2 text-white/10 z-0 ntp-02-preview-bg-title">
-                NTP-004 NTP-004
+                NTP-004NTP-004
               </h1>
               <h1 className="text-[18rem] lg:text-[20rem] overflow-hidden font-bold mb-2 ml-2 text-white/10 z-0 ntp-02-preview-bg-title">
-                NTP-004 NTP-004
+                NTP-004NTP-004
               </h1>
               <h1 className="text-[18rem] lg:text-[20rem] overflow-hidden font-bold mb-2 ml-2 text-white/10 z-0 ntp-02-preview-bg-title">
-                NTP-004 NTP-004
+                NTP-004NTP-004
               </h1>
               <h1 className="text-[18rem] lg:text-[20rem] overflow-hidden font-bold mb-2 ml-2 text-white/10 z-0 ntp-02-preview-bg-title">
-                NTP-004 NTP-004
+                NTP-004NTP-004
               </h1>
             </div>
           </div>
