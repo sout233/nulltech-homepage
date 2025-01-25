@@ -10,6 +10,11 @@ export default defineConfig({
         target: 'https://cdn.dizzylab.net',
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api/, '')
+      },
+      '/bilibili': {
+        target: 'https://data.bilibili.com',
+        changeOrigin: true,
+        secure: false
       }
     }
   }

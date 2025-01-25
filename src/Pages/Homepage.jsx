@@ -21,6 +21,7 @@ import { PerspectiveCamera } from "three";
 import { TextPlugin } from "gsap/TextPlugin";
 import { Flip } from "gsap/Flip";
 import { rand } from "three/tsl";
+import profiles from "../models/profiles";
 
 gsap.registerPlugin(useGSAP);
 gsap.registerPlugin(ScrollTrigger);
@@ -79,6 +80,7 @@ function Homepage() {
     0.1,
     100
   );
+  const [totalProfiles, setTotalProfiles] = useState(null);
 
   useEffect(() => {
     function update(time) {
@@ -101,6 +103,16 @@ function Homepage() {
 
     animate();
   }, []);
+
+  useEffect(() => {
+    const ntp1 = profiles.ntp1;
+    const ntp2 = profiles.ntp2;
+    const ntp3 = profiles.ntp3;
+
+    const totalProfiles = ntp1.concat(ntp2, ntp3);
+
+    setTotalProfiles(totalProfiles);
+  }, [totalProfiles]);
 
   const nulltechTitle = useRef();
   const albumsDiv = useRef();
@@ -153,16 +165,16 @@ function Homepage() {
     { scope: albumsDiv }
   );
 
+  let tl = gsap.timeline({
+    scrollTrigger: {
+      trigger: ".super-primary-panel",
+      scrub: true,
+      pin: true,
+      start: "top top",
+      end: "+=300%",
+    },
+  });
   useGSAP(() => {
-    let tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: ".super-primary-panel",
-        scrub: true,
-        pin: true,
-        start: "top top",
-        end: "+=150%",
-      },
-    });
 
     tl.from(".about-us-title", {
       duration: 10,
@@ -283,29 +295,7 @@ function Homepage() {
       "<"
     );
     tl.to(".about-us-title5", { duration: 4 });
-
-    let peoplePanel = gsap.utils.toArray(".people-panel");
-    peoplePanel.forEach((panel) => {
-      let y = gsap.utils.random(-100, 100);
-      panel.style.transform = `translateY(${y}px)`;
-    });
-
-    tl.fromTo(
-      peoplePanel,
-      {
-        x: "100vw",
-        opacity: 1,
-        duration: 10,
-        stagger: 2,
-      },
-      {
-        x: "-100vw",
-        opacity: 0.6,
-        duration: 10,
-        stagger: 2,
-      }
-    );
-
+    
     tl.to(
       ".about-us-title5",
       {
@@ -633,40 +623,28 @@ function Homepage() {
               你将扮演一名叫做草履虫的角色
             </h3>
           </div>
+          {/* 这里就是一堆卡片子 */}
           <>
-            <div className="flex flex-row justify-between items-center w-fit bg-base-100 p-4 rounded-md absolute people-panel">
-              <div className="avatar placeholder">
-                <div className="bg-neutral text-neutral-content w-12 rounded-full">
-                  <span className="text-3xl">D</span>
-                </div>
-              </div>
-              <div className="text-start ml-4">
-                <h1 className="text-xl font-bold">草履虫</h1>
-                <h2 className="text-sm">NULLTECH PARAMECIUM</h2>
-              </div>
-            </div>
-            <div className="flex flex-row justify-between items-center w-fit bg-base-100 p-4 rounded-md absolute people-panel">
-              <div className="avatar placeholder">
-                <div className="bg-neutral text-neutral-content w-12 rounded-full">
-                  <span className="text-3xl">D</span>
-                </div>
-              </div>
-              <div className="text-start ml-4">
-                <h1 className="text-xl font-bold">草履虫</h1>
-                <h2 className="text-sm">NULLTECH PARAMECIUM</h2>
-              </div>
-            </div>
-            <div className="flex flex-row justify-between items-center w-fit bg-base-100 p-4 rounded-md absolute people-panel">
-              <div className="avatar placeholder">
-                <div className="bg-neutral text-neutral-content w-12 rounded-full">
-                  <span className="text-3xl">D</span>
-                </div>
-              </div>
-              <div className="text-start ml-4">
-                <h1 className="text-xl font-bold">草履虫</h1>
-                <h2 className="text-sm">NULLTECH PARAMECIUM</h2>
-              </div>
-            </div>
+            {totalProfiles &&
+              totalProfiles.map((profile, index) => {
+                return (
+                  <div
+                    key={index}
+                    className="flex flex-row justify-between items-center w-fit bg-base-100 p-4 rounded-md absolute opacity-0 people-panel"
+                  >
+                    <div className="avatar">
+                      <img
+                        src={profile.face}
+                        className="w-20 h-20 rounded-full"
+                      ></img>
+                    </div>
+                    <div className="text-start ml-4">
+                      <h1 className="text-xl font-bold">{profile.name}</h1>
+                      <h2 className="text-sm">{profile.mid}</h2>
+                    </div>
+                  </div>
+                );
+              })}
             <div className="flex flex-row justify-between items-center w-fit bg-base-100 p-4 rounded-md absolute people-panel">
               <div className="avatar placeholder">
                 <div className="bg-neutral text-neutral-content w-12 rounded-full">
@@ -750,8 +728,39 @@ function Homepage() {
               className="absolute hidden md:block md:w-1/2 md:h-1/2 md:bottom-auto md:right-10 z-10 opacity-70 hover:opacity-100 ntp-02-video"
               border="0"
               frameborder="no"
+              autoPlay="false"
               framespacing="0"
               allowfullscreen="true"
+            ></iframe>
+          </div>
+        </div>
+
+        <div className="w-full h-screen flex bg-black">
+          <div class="bg-primary pointer-events-none absolute start-20 aspect-square w-96 rounded-full opacity-20 blur-3xl [transform:translate3d(0,0,0)]"></div>
+          <div class="bg-success pointer-events-none absolute aspect-square w-[40rem] rounded-full opacity-10 blur-3xl end-0"></div>
+          <div className="flex flex-col w-full items-center justify-center text-center">
+            <div class="bg-success pointer-events-none absolute aspect-square w-full rounded-full opacity-10 blur-3xl [transform:translate3d(0,0,0)]"></div>
+            <h1 className="~text-5xl/6xl font-bold mb-4 leading-none text-white">
+              NULLTECH SHOWCASE
+            </h1>
+            <h1 className="~text-2xl/3xl font-bold mb-4 leading-none text-white/80">
+              哇多么好的9min HITECH盛宴
+            </h1>
+            <a
+              href="https://www.bilibili.com/video/BV1i4wkeGEwH"
+              className="btn btn-outline w-[80%] md:w-48 mb-2 border-2 rounded-full hover:border-none z-10 ntp-02-preview-btn"
+            >
+              VIEW ON BILIBILI
+            </a>
+            <iframe
+              src="//player.bilibili.com/player.html?isOutside=true&aid=112994398831463&bvid=BV1UTWxeqEEb&cid=500001656039874&p=1"
+              scrolling="no"
+              className="w-1/3 h-1/3"
+              border="0"
+              frameborder="no"
+              framespacing="0"
+              allowfullscreen="true"
+              autoPlay="false"
             ></iframe>
           </div>
         </div>
