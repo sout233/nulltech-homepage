@@ -333,7 +333,7 @@ function Homepage() {
       {
         y: -200,
         fontSize: "1.8rem",
-        text: "你是一个一个啊啊",
+        text: "所有参专人员",
         duration: 4,
       },
       "<"
@@ -461,17 +461,20 @@ function Homepage() {
           <div className="flex-none">
             <ul className="menu menu-horizontal px-1">
               <li>
-                <a>Dizzylab</a>
+                <a href="https://www.dizzylab.net/l/NullTech_PARAMECIUM/">Dizzylab</a>
               </li>
               <li>
                 <details>
                   <summary>Event</summary>
                   <ul className="bg-base-100 rounded-t-none p-2">
                     <li>
-                      <a>NTP1</a>
+                      <a href="https://www.dizzylab.net/d/NTP-001/">NTP1</a>
                     </li>
                     <li>
-                      <a>NTP2</a>
+                      <a href="https://www.dizzylab.net/d/NTP-002/">NTP2</a>
+                    </li>
+                    <li>
+                      <a href="https://www.dizzylab.net/d/NTP-003/">NTP3</a>
                     </li>
                   </ul>
                 </details>
@@ -631,18 +634,18 @@ function Homepage() {
           </div>
           <div className="flex flex-col absolute justify-center items-center text-center h-full w-auto leading-tight panel">
             <h3 className="~text-2xl/4xl font-bold mb-2 text-primary-content about-us-title3">
-              你说的对
+              我们没有技术
             </h3>
             <h3 className="~text-2xl/4xl font-bold mb-2 text-primary-content about-us-title4">
-              但是NULLTECH是一个由那啥创建的那啥社团
+              所以才可能创造新的技术
             </h3>
           </div>
           <div className="flex flex-col absolute justify-center items-center text-center h-full w-auto leading-tight panel">
             <h3 className="~text-2xl/4xl font-bold mb-2 text-primary-content about-us-title5">
-              在这个社团里
+              我们是草履虫
             </h3>
-            <h3 className="~text-2xl/4xl font-bold mb-2 text-primary-content about-us-title6">
-              你将扮演一名叫做草履虫的角色
+            <h3 className="~text-2xl/4xl font-bold mb-4 text-primary-content about-us-title6">
+              所以我们有无限的可能性
             </h3>
           </div>
           {/* 这里就是一堆卡片子 */}
@@ -667,36 +670,25 @@ function Homepage() {
                   </div>
                 );
               })}
-            <div className="flex flex-row justify-between items-center w-fit bg-base-100 p-4 rounded-md absolute people-panel">
-              <div className="avatar placeholder">
-                <div className="bg-neutral text-neutral-content w-12 rounded-full">
-                  <span className="text-3xl">D</span>
-                </div>
-              </div>
-              <div className="text-start ml-4">
-                <h1 className="text-xl font-bold">草履虫</h1>
-                <h2 className="text-sm">NULLTECH PARAMECIUM</h2>
-              </div>
-            </div>
           </>
           <div className="flex flex-col absolute justify-center items-center">
             <a
-              href="https://www.dizzylab.net/l/NullTech_PARAMECIUM/"
-              className="btn btn-outline w-full md:w-48 mt-6 border-black text-black border-2 rounded-full hover:border-none hover:bg-black hover:text-primary view-ntp-btn"
+              href="https://www.bilibili.com/video/BV1Tp4y1m7Zs"
+              className="btn btn-outline w-48 mt-6 border-black text-black border-2 rounded-full hover:border-none hover:bg-black hover:text-primary view-ntp-btn"
             >
-              VIEW NTP1
+              VIEW NTP-001
             </a>
             <a
-              href="https://www.dizzylab.net/l/NullTech_PARAMECIUM/"
+              href="https://www.bilibili.com/video/BV1UTWxeqEEb"
               className="btn btn-outline w-full md:w-48 mt-6 border-black text-black border-2 rounded-full hover:border-none hover:bg-black hover:text-primary view-ntp-btn"
             >
-              VIEW NTP1
+              VIEW NTP-002
             </a>
             <a
-              href="https://www.dizzylab.net/l/NullTech_PARAMECIUM/"
+              href="https://www.bilibili.com/video/BV1N8t4ejEp6/"
               className="btn btn-outline w-full md:w-48 mt-6 border-black text-black border-2 rounded-full hover:border-none hover:bg-black hover:text-primary view-ntp-btn"
             >
-              VIEW NTP1
+              VIEW NTP-003
             </a>
           </div>
         </div>
@@ -791,22 +783,34 @@ function Homepage() {
           <div className="flex flex-col w-full items-center justify-center text-center overflow-hidden relative">
             <div class="bg-warning pointer-events-none absolute aspect-square w-full rounded-full opacity-10 blur-3xl [transform:translate3d(0,0,0)]"></div>
             <h1 className="~text-5xl/6xl font-bold mb-4 leading-none text-white">
-              NULLTECH 没写完
+              FOLLOW US
             </h1>
-            <h1 className="~text-2xl/3xl font-bold mb-4 leading-none text-white/80">
-              没写完没写完没写完我要睡觉了
+            <h1 className="~text-2xl/3xl font-bold mx-2 mb-4 leading-none text-white/80">
+              在社交媒体上关注我们，以查看最新动态
             </h1>
             <a
-              href="https://www.bilibili.com/video/BV1i4wkeGEwH"
-              className="btn btn-outline w-[80%] md:w-48 mb-2 border-2 rounded-full hover:border-none z-10 ntp-02-preview-btn"
+              href="https://space.bilibili.com/3546388319177513"
+              className="btn btn-outline w-[80%] md:w-48 my-2 border-2 rounded-full hover:border-none z-10 ntp-02-preview-btn"
             >
-              VIEW ON 没写完
+              BILIBILI
+            </a>
+            <a
+              href="https://x.com/NT_PARAMECIUM"
+              className="btn btn-outline w-[80%] md:w-48 my-2 border-2 rounded-full hover:border-none z-10 ntp-02-preview-btn"
+            >
+              TWITTER
+            </a>
+            <a
+              href="https://www.youtube.com/@NULLTECH_PARAMECIUM"
+              className="btn btn-outline w-[80%] md:w-48 my-2 border-2 rounded-full hover:border-none z-10 ntp-02-preview-btn"
+            >
+              YOUTUBE
             </a>
           </div>
         </div>
 
         <footer className="footer bg-neutral text-neutral-content p-10 relative overflow-hidden">
-        <div class="bg-success pointer-events-none absolute aspect-square w-full rounded-full opacity-10 blur-3xl [transform:translate3d(0,0,0)]"></div>
+          <div class="bg-success pointer-events-none absolute aspect-square w-full rounded-full opacity-10 blur-3xl [transform:translate3d(0,0,0)]"></div>
           <aside>
             <svg
               width="50"
@@ -828,7 +832,7 @@ function Homepage() {
           <nav>
             <h6 className="footer-title">Social</h6>
             <div className="grid grid-flow-col gap-4">
-              <a>
+              <a href="https://x.com/NT_PARAMECIUM">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="24"
@@ -839,7 +843,7 @@ function Homepage() {
                   <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"></path>
                 </svg>
               </a>
-              <a>
+              <a href="https://www.youtube.com/@NULLTECH_PARAMECIUM">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="24"
@@ -850,7 +854,21 @@ function Homepage() {
                   <path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"></path>
                 </svg>
               </a>
-            
+              <a href="https://space.bilibili.com/3546388319177513">
+                <svg
+                  t="1737987459991"
+                  viewBox="0 0 1024 1024"
+                  version="1.1"
+                  xmlns="http://www.w3.org/2000/svg"
+                  p-id="4192"
+                  width="25"
+                  height="25"
+                  className="fill-current"
+                >
+                  <path d="M257.2 111.1c15.8-9.02 35.9-10.28 52.6-2.9 12.52 5.14 21.94 15.22 32.12 23.78 42 36.24 83.64 72.94 125.82 108.96 29.5 0.06 59.02 0.06 88.52 0 42.16-36 83.76-72.66 125.74-108.9 10.2-8.56 19.64-18.66 32.2-23.84 16.24-7.16 35.72-6.2 51.32 2.22 18.24 9.42 30.9 28.94 31.68 49.5 1.18 14.94-4.18 30.02-13.56 41.6-8.3 9.2-18.18 16.72-27.38 24.96-5.88 4.86-11.16 10.46-17.64 14.56 26.02 0 52.04-0.3 78.06 0.16 34.28 0.9 67.64 16.06 91.22 40.9 24.9 24.44 39.1 58.94 39.08 93.8 0.12 119.36 0.02 238.74 0.06 358.12-0.12 18.04 0.86 36.34-3.14 54.08-7.3 36.32-31.68 67.78-62.68 87.32-21.16 13.42-46.34 19.56-71.26 19.6-189.98 0.02-379.98 0-569.96 0-18.74-0.12-37.7 0.98-56.14-3.14-35.32-7.1-66.06-30.4-85.7-60.16C83.74 810.06 76.98 783.9 76.98 758c-0.02-117.98 0-235.96 0-353.94 0.16-18.14-0.96-36.48 2.74-54.36 11.22-58.22 64.86-105.76 124.38-108.34 27.1-0.84 54.24-0.22 81.36-0.32-12.76-9.26-24.02-20.44-36.1-30.56-14.82-12.14-24.1-31.28-22.56-50.56 0.78-20.06 12.84-39.18 30.4-48.82m-14.32 244.14c-23.08 4.14-42.86 22.36-49.3 44.84-2.32 7.72-2.54 15.88-2.58 23.9 0.1 98.02-0.06 196.04 0.08 294.06-0.46 26.68 17.94 51.94 43.06 60.44 8.92 3.26 18.56 3.3 27.92 3.36 168.66-0.08 337.3 0.08 505.94-0.06 24.72 1 48.52-14.4 58.92-36.6 6.36-12.72 6.28-27.24 6.06-41.1-0.02-91.32-0.02-182.64 0-273.94-0.02-10.04 0.34-20.34-2.58-30.06-5.6-19.58-21.3-35.92-40.54-42.54-10.8-3.9-22.48-3.3-33.76-3.38-161.32 0.02-322.62 0-483.94 0.02-9.76 0.02-19.58-0.34-29.28 1.06z"></path>
+                  <path d="M345.04 449.44c16.12-1.66 32.84 3.56 45.14 14.1 13.68 11.22 21.5 28.72 21.72 46.32 0.44 21.38 0.16 42.8 0.16 64.18-0.06 14.04-3.76 28.36-12.48 39.56-12.12 16.44-33.02 25.82-53.36 23.94-20.06-1.26-38.92-13.5-48.46-31.14-7.48-12.8-8.14-28.02-7.94-42.46 0.48-20.74-1.04-41.6 1.02-62.28 3.08-27.22 26.98-49.94 54.2-52.22z m321.9 0c16.7-1.74 33.98 3.92 46.48 15.1 12.32 10.84 19.84 26.88 20.34 43.28 0.94 20.04 0.12 40.12 0.44 60.16 0.12 14.08-1.54 28.78-9.36 40.86-11.28 18.78-33.34 30.34-55.2 28.8-19.14-0.78-37.42-11.48-47.72-27.58-8.74-12.9-10.44-28.88-10.06-44.08 0.4-20.62-0.74-41.26 0.68-61.84 2.04-28.16 26.34-52.32 54.4-54.7z"></path>
+                </svg>
+              </a>
             </div>
           </nav>
         </footer>
