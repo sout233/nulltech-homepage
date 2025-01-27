@@ -170,6 +170,11 @@ const ntp3 = [
     face: "/images/1cadc6c54bfaa5a3bea035caf05188a3307339ec.jpg",
     mid: 1290570035,
   },
+  {
+    name: "G.Toolman",
+    face: "/images/b_581c7f1d28b44fba19fc9b95e9aaf79b.jpg",
+    mid: 53852111,
+  }
 ];
 
 function getAllProfiles() {
