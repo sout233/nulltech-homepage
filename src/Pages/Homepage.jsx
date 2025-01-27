@@ -737,7 +737,7 @@ function Homepage() {
             </div>
 
             <iframe
-              src="//player.bilibili.com/player.html?isOutside=true&aid=113855875253582&bvid=BV1i4wkeGEwH&cid=27980992029&p=1"
+              src="//player.bilibili.com/player.html?isOutside=true&aid=113855875253582&bvid=BV1i4wkeGEwH&cid=27980992029&p=1&autoplay=0"
               scrolling="no"
               className="absolute hidden md:block md:w-1/2 md:h-1/2 md:bottom-auto md:right-10 z-10 opacity-70 hover:opacity-100 ntp-02-video"
               border="0"
@@ -767,7 +767,7 @@ function Homepage() {
               VIEW ON BILIBILI
             </a>
             <iframe
-              src="//player.bilibili.com/player.html?isOutside=true&aid=112994398831463&bvid=BV1UTWxeqEEb&cid=500001656039874&p=1"
+              src="//player.bilibili.com/player.html?isOutside=true&aid=112994398831463&bvid=BV1UTWxeqEEb&cid=500001656039874&p=1&autoplay=0"
               scrolling="no"
               className="w-1/3 h-1/3"
               border="0"
